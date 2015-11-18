@@ -1,0 +1,145 @@
+@import "PlaceLinkedBitmap.js"
+
+var PLB_layer_prefix = '@: ';
+
+var PLB_find_all_tagged_layers = function(context) {
+  var doc = context.document;
+  var plugin = context.plugin;
+  var command = context.command;
+
+  var page = [doc currentPage];
+  var layers = [page children];
+
+  var foundLayers = PlaceLinkedBitmap.findAllTaggedLayers(context,layers);
+  log(foundLayers);
+};
+
+var PLB_place_bitmap_as_new_layer = function(context) {
+  var doc = context.document;
+  var plugin = context.plugin;
+  var command = context.command;
+
+  var page = [doc currentPage];
+  var selection = context.selection;
+
+  if ([doc fileURL]) {
+    var docDir = PlaceLinkedBitmap.getDirFromLocalURL([doc fileURL],true);
+    var group;
+
+    if ([selection count] > 0) {
+      var sel = [selection objectAtIndex:0];
+      if ([sel className] == "MSArtboardGroup") {
+        group = sel;
+      } else {
+        group = [sel parentGroup];
+      }
+    } else {
+      group = page;
+    }
+
+    var selectedBitmapURL = PlaceLinkedBitmap.openPanel(docDir,"Select a bitmap file to place…","Select","Place Bitmap");
+    if (selectedBitmapURL) {
+      var relativeURL = PlaceLinkedBitmap.getRelativeDir([selectedBitmapURL absoluteString],docDir);
+      var layerName = PlaceLinkedBitmap.makeLayerName(relativeURL,[[doc fileURL] absoluteString]);
+      var imageLayer = PlaceLinkedBitmap.makeBitmapLayer(group,layerName,selectedBitmapURL);
+      [command setValue:relativeURL forKey:"originalURL" onLayer:imageLayer];
+      log("originalURL → " + [command valueForKey:"originalURL" onLayer:imageLayer]);
+      [imageLayer select:true byExpandingSelection:false];
+    }
+  } else {
+    PlaceLinkedBitmap.util.displayAlert("Place Linked Bitmap…","Please save your Sketch document before placing a bitmap.");
+  }
+};
+
+var PLB_place_bitmap_as_fill = function(context) {
+  var doc = context.document;
+  var plugin = context.plugin;
+  var command = context.command;
+
+  var page = [doc currentPage];
+  var selection = context.selection;
+
+  if ([doc fileURL]) {
+    var docDir = PlaceLinkedBitmap.getDirFromLocalURL([doc fileURL],true);
+
+    if ([selection count] > 0) {
+      var validLayers = [];
+      for (x = 0; x < [selection count]; x++) {
+        var layer = [selection objectAtIndex:x];
+        if ([layer className] == "MSShapeGroup") {
+          validLayers.push(layer);
+        }
+      }
+      if (validLayers.length > 0) {
+        var selectedBitmapURL = PlaceLinkedBitmap.openPanel(docDir,"Select a bitmap file to place…","Select","Place Bitmap");
+        if (selectedBitmapURL) {
+          var relativeURL = PlaceLinkedBitmap.getRelativeDir([selectedBitmapURL absoluteString],docDir);
+          for (x = 0; x < validLayers.length; x++) {
+            var fillLayer = PlaceLinkedBitmap.addFillToShapeLayer(context,validLayers[x],selectedBitmapURL);
+            [command setValue:relativeURL forKey:"originalURL" onLayer:fillLayer];
+            log("originalURL → " + [command valueForKey:"originalURL" onLayer:fillLayer]);
+            [fillLayer select:true byExpandingSelection:false];
+          }
+        }
+      } else {
+        PlaceLinkedBitmap.util.displayAlert("Place Linked Bitmap…","Please select a shape layer to fill.");
+      }
+    } else {
+      PlaceLinkedBitmap.util.displayAlert("Place Linked Bitmap…","Please select a shape layer to fill.");
+    }
+  } else {
+    PlaceLinkedBitmap.util.displayAlert("Place Linked Bitmap…","Please save your Sketch document before placing a bitmap.");
+  }
+};
+
+var PLB_update_bitmaps = function(context) {
+  var doc = context.document;
+  var plugin = context.plugin;
+  var command = context.command;
+
+  var page = [doc currentPage];
+  var selection = context.selection;
+
+  var docDir = PlaceLinkedBitmap.getDirFromLocalURL([doc fileURL],true);
+
+  var allLayers = [page children];
+  var validLayers = PlaceLinkedBitmap.findAllTaggedLayers(context,allLayers);
+
+  if (validLayers.length > 0) {
+    for (var x = 0; x < validLayers.length; x++) {
+      var layer = validLayers[x];
+      if ([command valueForKey:"originalURL" onLayer:layer]) {
+        var taggedFileURL = [command valueForKey:"originalURL" onLayer:layer];
+        var fileURL = PlaceLinkedBitmap.expandRelativePath(taggedFileURL,docDir);
+        var fileDir = PlaceLinkedBitmap.getDirFromLocalURL(fileURL,false);
+        var fileURLUnix = fileURL.toString().replace('file:///','/');
+        fileURLUnix = PlaceLinkedBitmap.util.decodeString(fileURLUnix);
+
+        var fileExists = [[NSFileManager defaultManager] fileExistsAtPath:fileURLUnix];
+
+        if (fileExists) {
+          var fileURLEncoded = fileURL;
+          if ([layer className] == "MSBitmapLayer") {
+            PlaceLinkedBitmap.updateBitmapLayer(context,layer,fileURLUnix);
+            log(fileURLUnix + " updated");
+          } else if ([layer className] == "MSShapeGroup") {
+            PlaceLinkedBitmap.updateShapeLayer(context,layer,fileURLUnix);
+            log(fileURLUnix + " updated");
+          }
+        } else {
+          log(fileURLUnix + " not found, skipping");
+        }
+      }
+    }
+  } else {
+    PlaceLinkedBitmap.util.displayAlert("Update Bitmaps","No bitmaps to update.");
+  }
+};
+
+var PLB_replace_bitmap = function(context) {
+  var doc = context.document;
+  var page = [doc currentPage];
+  var selection = context.selection;
+
+  log("PLB_replace_bitmap");
+};

@@ -45,7 +45,7 @@ Mac App Store (MAS) apps are bound by something called “sandboxing”. By defa
 5. **If I move a placed bitmap from one artboard to another, will it still update?** Yes.
 6. **What about from one document to another?** Maybe. If both .sketch files are in the same folder, definitely. If they’re not... 
 7. **If I copy a placed bitmap from one artboard and paste it into another artboard, will it still update?** Yes, they both will update.
-5. **If the size of my bitmap changes, will the size of the placed bitmap change, too?** No, and for now, that’s on purpose. There is no great way to deal with this issue. But I’m still thinking about it. Suggestions are welcome.
+5. **If the size of my bitmap changes, will the size of the placed bitmap change, too?** Right now, Sketch decides what to do about that. I’m still considering whether or not to override it.
 6. **Is there any way to have the plugin automatically update a bitmap after it’s changed, like Adobe’s apps can?** At the moment, Sketch plugins can only run when you tell them to. I’ve heard Bohemian Coding might be looking into other events to trigger plugins, but until then, the answer is no, unfortunately.
 7. **I already have a bunch of placed bitmaps in my .sketch file. Will the plugin update them for me?** That would be great, but no. *Bitmaps have to be placed by the plugin*, so that the plugin can store location of the bitmap file.
 
@@ -64,3 +64,8 @@ Mac App Store (MAS) apps are bound by something called “sandboxing”. By defa
 ### Who?
 
 I’m Frank Kolodziej, a New York City-based freelance designer & developer. I am [available for hire](http://kolo.io/).
+
+#### Other Plugins
+
+- [★ Utility Belt](https://github.com/frankko/UtilityBelt): An always-expanding collection of simple, focused plugins for Sketch.
+- [Artboard Tools](https://github.com/frankko/Artboard-Tools): Plugins for arranging artboards and navigating between artboards.

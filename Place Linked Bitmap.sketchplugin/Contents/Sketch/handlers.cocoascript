@@ -120,7 +120,16 @@ var PLB_update_bitmaps = function(context) {
         if (fileExists) {
           var fileURLEncoded = fileURL;
           if ([layer className] == "MSBitmapLayer") {
+            var layerFrame = [layer frame];
+            var layerFrameX = [layerFrame x];
+            var layerFrameY = [layerFrame y];
+            var layerFrameW = [layerFrame width];
+            var layerFrameH = [layerFrame height];
             PlaceLinkedBitmap.updateBitmapLayer(context,layer,fileURLUnix);
+            [[layer frame] setX:layerFrameX];
+            [[layer frame] setY:layerFrameY];
+            [[layer frame] setWidth:layerFrameW];
+            [[layer frame] setHeight:layerFrameH];
             log(fileURLUnix + " updated");
           } else if ([layer className] == "MSShapeGroup") {
             PlaceLinkedBitmap.updateShapeLayer(context,layer,fileURLUnix);

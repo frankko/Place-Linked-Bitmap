@@ -1,5 +1,3 @@
-@import '_sandbox.js'
-
 var PlaceLinkedBitmap = {
   "addFillToShapeLayer": function(context,layer,url) {
     var doc = context.document;
@@ -99,14 +97,12 @@ var PlaceLinkedBitmap = {
     return fileURL;
   },
   "makeBitmapLayer": function(container,name,url) {
-//    log("in_sandbox: " + in_sandbox);
     var filePath = url.toString();
     filePath = filePath.replace("file:///","/");
     filePath = this.util.decodeString(filePath);
 
     var layer = [MSBitmapLayer bitmapLayerWithImageFromPath:filePath];
     if (layer == nil) { 
-      log("We're sandboxed!"); 
     } else {
       [container addLayers:[layer]];
       layer.name = name;
@@ -147,12 +143,6 @@ var PlaceLinkedBitmap = {
     filePath = filePath.replace("file:///","/");
     filePath = this.util.decodeString(filePath);
 
-    if (in_sandbox) {
-      var fileDir = this.getDirFromLocalURL(filePath,false);
-      new AppSandbox(context).authorize(fileDir,function(){
-      });
-    }
-
     var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
     var replaceAction = [[doc actionsController] actionWithName:"MSReplaceImageAction"];
     [replaceAction applyImage:newImage tolayer:layer];
@@ -164,12 +154,6 @@ var PlaceLinkedBitmap = {
     var filePath = url.toString();
     filePath = filePath.replace("file:///","/");
     filePath = this.util.decodeString(filePath);
-
-    if (in_sandbox) {
-      var fileDir = this.getDirFromLocalURL(filePath,false);
-      new AppSandbox(context).authorize(fileDir,function(){
-      });
-    }
 
     var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
 

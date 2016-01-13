@@ -1,5 +1,5 @@
 # Place Linked Bitmap
-## A Plugin for Sketch 3.4+
+## A Plugin for Sketch 3.4.3+
 
 ### What is this?
 
@@ -34,7 +34,7 @@ If you roll solo, like I do, you don’t have too much to worry about. But if yo
 
 ### About the Mac App Store version of Sketch…
 
-Mac App Store (MAS) apps are bound by something called “sandboxing”. By default, for your security, an application can only access files within its own application bundle. But since that’s not a practical place for you to store your design files, during the “Update All Bitmaps…” command, Sketch will ask you to authorize the folder(s) where your bitmaps are stored. You should only have to do this once per folder.
+Bohemian Coding have [removed Sketch from the Mac App Store](http://blog.sketchapp.com/post/134322691555/leaving-the-mac-app-store)
 
 ### Frequently Asked Questions
 
@@ -45,25 +45,29 @@ Mac App Store (MAS) apps are bound by something called “sandboxing”. By defa
 5. **If I move a placed bitmap from one artboard to another, will it still update?** Yes.
 6. **What about from one document to another?** Maybe. If both .sketch files are in the same folder, definitely. If they’re not... 
 7. **If I copy a placed bitmap from one artboard and paste it into another artboard, will it still update?** Yes, they both will update.
-5. **If the size of my bitmap changes, will the size of the placed bitmap change, too?** Right now, Sketch decides what to do about that. I’m still considering whether or not to override it.
+5. **If the size of my bitmap changes, will the size of the placed bitmap change, too?** Right now, the size of the bitmap layer won't change. I'm still thinking of ways to make it smarter, based on complicated math and dumb luck. But I don't have a solution yet.
 6. **Is there any way to have the plugin automatically update a bitmap after it’s changed, like Adobe’s apps can?** At the moment, Sketch plugins can only run when you tell them to. I’ve heard Bohemian Coding might be looking into other events to trigger plugins, but until then, the answer is no, unfortunately.
 7. **I already have a bunch of placed bitmaps in my .sketch file. Will the plugin update them for me?** That would be great, but no. *Bitmaps have to be placed by the plugin*, so that the plugin can store location of the bitmap file.
 
 ### Roadmap
 
-- make further optimizations for MAS users
+- ~~make further optimizations for MAS users~~
 - a way to “relink” and/or “replace” a bitmap
 - a way to “unlink” a bitmap
 
 ### Version History
 
-- **0.9** Public beta
+- **0.9.1**
+  - **Removed support for the Mac App Store version of Sketch.**
+  - preserve dimensions for bitmap layers with strange DPIs. (fixes #1)
+- **0.9**
+  - Initial release / Public beta
 
 * * * 
 
 ### Who?
 
-I’m Frank Kolodziej, a New York City-based freelance designer & developer. I am [available for hire](http://kolo.io/).
+I’m Frank Kolodziej, a New York City-based freelance designer & developer. I am [available for hire](http://kolo.io/). I'm [@frankko](https://twitter.com/frankko) on Twitter.
 
 #### Other Plugins
 

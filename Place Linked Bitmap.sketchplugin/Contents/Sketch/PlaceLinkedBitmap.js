@@ -9,8 +9,9 @@ var PlaceLinkedBitmap = {
     var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
 
     var fill = layer.style().fills().firstObject();
-    var coll = layer.style().fills().firstObject().documentData().images();
-    [fill setPatternImage:newImage collection:coll]
+//    var coll = layer.style().fills().firstObject().documentData().images();
+//    [fill setPatternImage:newImage collection:coll]
+    [fill setPatternImage:newImage];
     [fill setFillType:4];
     [fill setPatternFillType:1];
     return layer;
@@ -129,7 +130,28 @@ var PlaceLinkedBitmap = {
     [[NSApplication sharedApplication] activateIgnoringOtherApps:true];
     var openPanelButtonPressed = [openPanel runModal];
     if (openPanelButtonPressed == NSFileHandlingPanelOKButton) {
-      selectedFile = [openPanel URL]);
+      selectedFile = [openPanel URL];
+      return selectedFile;
+    } else {
+      return false;
+    }
+  },
+  "openPanelMultiple": function(filePath,message,prompt,title) {
+    var openPanel = [NSOpenPanel openPanel];
+    [openPanel setMessage:message];
+    [openPanel setPrompt:prompt];
+    [openPanel setTitle:title];
+    [openPanel setCanCreateDirectories:false];
+    [openPanel setCanChooseFiles:true];
+    [openPanel setCanChooseDirectories:false];
+    [openPanel setAllowsMultipleSelection:true];
+    [openPanel setShowsHiddenFiles:false];
+    [openPanel setExtensionHidden:false];
+    [openPanel setDirectoryURL:[NSURL fileURLWithPath:filePath]]];
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:true];
+    var openPanelButtonPressed = [openPanel runModal];
+    if (openPanelButtonPressed == NSFileHandlingPanelOKButton) {
+      selectedFile = [openPanel URLs];
       return selectedFile;
     } else {
       return false;
@@ -158,8 +180,9 @@ var PlaceLinkedBitmap = {
     var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
 
     var fill = layer.style().fills().firstObject();
-    var coll = layer.style().fills().firstObject().documentData().images();
-    [fill setPatternImage:newImage collection:coll]
+//    var coll = layer.style().fills().firstObject().documentData().images();
+//    [fill setPatternImage:newImage collection:coll]
+    [fill setPatternImage:newImage];
     [fill setFillType:4];
     [fill setPatternFillType:1];
   },

@@ -37,14 +37,17 @@ var PLB_place_bitmap_as_new_layer = function(context) {
       group = page;
     }
 
-    var selectedBitmapURL = PlaceLinkedBitmap.openPanel(docDir,"Select a bitmap file to place…","Select","Place Bitmap");
-    if (selectedBitmapURL) {
-      var relativeURL = PlaceLinkedBitmap.getRelativeDir([selectedBitmapURL absoluteString],docDir);
-      var layerName = PlaceLinkedBitmap.makeLayerName(relativeURL,[[doc fileURL] absoluteString]);
-      var imageLayer = PlaceLinkedBitmap.makeBitmapLayer(group,layerName,selectedBitmapURL);
-      [command setValue:relativeURL forKey:"originalURL" onLayer:imageLayer];
-      log("originalURL → " + [command valueForKey:"originalURL" onLayer:imageLayer]);
-      [imageLayer select:true byExpandingSelection:false];
+    var selectedBitmapURL = PlaceLinkedBitmap.openPanelMultiple(docDir,"Select a bitmap file to place…","Select","Place Bitmap");
+    if ([selectedBitmapURL count] > 0) {
+      for (x = 0; x < [selectedBitmapURL count]; x++) {
+        var thisBitmap = [selectedBitmapURL objectAtIndex:x];
+        var relativeURL = PlaceLinkedBitmap.getRelativeDir([thisBitmap absoluteString],docDir);
+        var layerName = PlaceLinkedBitmap.makeLayerName(relativeURL,[[doc fileURL] absoluteString]);
+        var imageLayer = PlaceLinkedBitmap.makeBitmapLayer(group,layerName,thisBitmap);
+        [command setValue:relativeURL forKey:"originalURL" onLayer:imageLayer];
+        log("originalURL → " + [command valueForKey:"originalURL" onLayer:imageLayer]);
+        [imageLayer select:true byExpandingSelection:false];
+      }
     }
   } else {
     PlaceLinkedBitmap.util.displayAlert("Place Linked Bitmap…","Please save your Sketch document before placing a bitmap.");

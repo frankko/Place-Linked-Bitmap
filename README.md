@@ -1,5 +1,5 @@
 # Place Linked Bitmap
-## A Plugin for Sketch 3.4.3+
+## A Plugin for Sketch 3.8
 
 ### What is this?
 
@@ -57,6 +57,8 @@ Bohemian Coding have [removed Sketch from the Mac App Store](http://blog.sketcha
 
 ### Version History
 
+- **0.9.3**
+  - updated for Sketch 3.8. **Don’t update if you’re sticking with Sketch 3.7.**
 - **0.9.2**
   - **Place Bitmap as New Layer…** can now select multiple bitmap files at one time to place as multiple layers
   - fixes for Sketch 3.5

@@ -9,9 +9,8 @@ var PlaceLinkedBitmap = {
     var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
 
     var fill = layer.style().fills().firstObject();
-//    var coll = layer.style().fills().firstObject().documentData().images();
-//    [fill setPatternImage:newImage collection:coll]
     [fill setPatternImage:newImage];
+//    [fill setImage:newImage];
     [fill setFillType:4];
     [fill setPatternFillType:1];
     return layer;
@@ -166,7 +165,7 @@ var PlaceLinkedBitmap = {
     filePath = this.util.decodeString(filePath);
 
     var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
-    var replaceAction = [[doc actionsController] actionWithName:"MSReplaceImageAction"];
+    var replaceAction = [[doc actionsController] actionWithID:"MSReplaceImageAction"];
     [replaceAction applyImage:newImage tolayer:layer];
   },
   "updateShapeLayer": function(context,layer,url) {
@@ -180,9 +179,8 @@ var PlaceLinkedBitmap = {
     var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
 
     var fill = layer.style().fills().firstObject();
-//    var coll = layer.style().fills().firstObject().documentData().images();
-//    [fill setPatternImage:newImage collection:coll]
     [fill setPatternImage:newImage];
+//    [fill setImage:newImage];
     [fill setFillType:4];
     [fill setPatternFillType:1];
   },

@@ -44,6 +44,8 @@ var PLB_place_bitmap_as_new_layer = function(context) {
         var relativeURL = PlaceLinkedBitmap.getRelativeDir([thisBitmap absoluteString],docDir);
         var layerName = PlaceLinkedBitmap.makeLayerName(relativeURL,[[doc fileURL] absoluteString]);
         var imageLayer = PlaceLinkedBitmap.makeBitmapLayer(group,layerName,thisBitmap);
+        log("imageLayer:");
+        log(imageLayer);
         [command setValue:relativeURL forKey:"originalURL" onLayer:imageLayer];
         log("originalURL → " + [command valueForKey:"originalURL" onLayer:imageLayer]);
         [imageLayer select:true byExpandingSelection:false];

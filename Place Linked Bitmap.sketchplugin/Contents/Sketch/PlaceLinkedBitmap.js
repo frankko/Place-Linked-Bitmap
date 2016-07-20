@@ -97,11 +97,8 @@ var PlaceLinkedBitmap = {
     return fileURL;
   },
   "makeBitmapLayer": function(container,name,url) {
-    var filePath = url.toString();
-    filePath = filePath.replace("file:///","/");
-    filePath = this.util.decodeString(filePath);
+    var layer = [MSBitmapLayer bitmapLayerWithImageFromPath:url];
 
-    var layer = [MSBitmapLayer bitmapLayerWithImageFromPath:filePath];
     if (layer == nil) { 
     } else {
       [container addLayers:[layer]];

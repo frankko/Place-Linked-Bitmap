@@ -1,5 +1,5 @@
 # Place Linked Bitmap
-## A Plugin for Sketch 39
+## A Plugin for Sketch 39+
 
 ### What is this?
 
@@ -56,6 +56,8 @@ Bohemian Coding have [removed Sketch from the Mac App Store](http://blog.sketcha
 
 ### Version History
 
+- **1.39.2**
+  - compatible with Sketch 39 & Sketch 40 beta.
 - **1.39.1**
   - updated for Sketch 39. **Don’t update if you’re sticking with Sketch 3.8.**
 - **0.9.3**

@@ -6,11 +6,11 @@ var PlaceLinkedBitmap = {
     filePath = filePath.replace("file:///","/");
     filePath = this.util.decodeString(filePath);
 
-    var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
+    var imageData = [[NSImage alloc] initWithContentsOfFile:filePath];
+		var newImage = [[MSImageData alloc] initWithImage:imageData convertColorSpace:false]];
 
     var fill = layer.style().fills().firstObject();
-    [fill setPatternImage:newImage];
-//    [fill setImage:newImage];
+    [fill setImage:newImage];
     [fill setFillType:4];
     [fill setPatternFillType:1];
     return layer;
@@ -173,11 +173,11 @@ var PlaceLinkedBitmap = {
     filePath = filePath.replace("file:///","/");
     filePath = this.util.decodeString(filePath);
 
-    var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
+    var imageData = [[NSImage alloc] initWithContentsOfFile:filePath];
+		var newImage = [[MSImageData alloc] initWithImage:imageData convertColorSpace:false]];
 
     var fill = layer.style().fills().firstObject();
-    [fill setPatternImage:newImage];
-//    [fill setImage:newImage];
+    [fill setImage:newImage];
     [fill setFillType:4];
     [fill setPatternFillType:1];
   },

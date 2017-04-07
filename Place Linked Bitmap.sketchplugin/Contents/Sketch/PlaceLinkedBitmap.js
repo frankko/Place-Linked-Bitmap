@@ -162,7 +162,7 @@ var PlaceLinkedBitmap = {
     filePath = this.util.decodeString(filePath);
 
     var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
-    var replaceAction = [[doc actionsController] actionWithID:"MSReplaceImageAction"];
+    var replaceAction = [[doc actionsController] actionForID:"MSReplaceImageAction"];
     [replaceAction applyImage:newImage tolayer:layer];
   },
   "updateShapeLayer": function(context,layer,url) {

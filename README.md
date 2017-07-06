@@ -77,7 +77,7 @@ Bohemian Coding have [removed Sketch from the Mac App Store](http://blog.sketcha
 
 ### Who?
 
-I’m Frank Kolodziej, a New York City-based freelance designer & developer. I am [available for hire](http://kolo.io/). I’m [@frankko](https://twitter.com/frankko) on Twitter.
+I’m Frank Kolodziej, a Wichita, KS-based freelance designer & developer. I am [available for hire](http://kolo.io/). I’m [@frankko](https://twitter.com/frankko) on Twitter.
 
 #### Other Plugins
 

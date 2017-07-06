@@ -1,4 +1,5 @@
 {
+  "appcast": "https://raw.githubusercontent.com/frankko/Place-Linked-Bitmap/master/appcast.xml",
   "commands": [
     {
       "handler": "PLB_place_bitmap_as_new_layer",
@@ -39,7 +40,7 @@
   "author": "Frank Kolodziej",
   "authorEmail": "frank@kolo.io",
   "compatibleVersion": "43",
-  "description": "Place external bitmap files into Sketch; update Sketch layers after external bitmaps are updated",
+  "description": "Place external bitmap files into Sketch; update Sketch layers after external bitmaps are updated.",
   "name": "Place Linked Bitmap",
-  "version": "1.43.2"
+  "version": "1.43.5"
 }

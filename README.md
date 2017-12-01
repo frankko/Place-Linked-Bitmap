@@ -11,9 +11,7 @@ Place a PSD file on an artboard, handle your business in Sketch, then maybe swit
 
 If you don’t use Photoshop (or Pixelmator, or Acorn, or etc), I envy you. But you still might want to give this a try, and here’s why:
 
-As of Sketch 3.4, an artboard can’t be turned into a symbol. You can, of course, export an artboard as a bitmap. See where I’m going with this? Export the artboard and place the bitmap of the artboard in your .sketch file. Then, after you edit and re-export the original artboard, “Update All Bitmaps…”
-
-**Extra Credit:** Have you heard of [SketchTool](http://www.sketchapp.com/tool/), Bohemian Coding’s command line utility for exporting assets from Sketch? A shell script can be made to automate the exporting of artboards using SketchTool. If your artboard exporting is automated, you’ll just need to periodically “Update All Bitmaps…”
+As of Sketch 3.4, an artboard can’t be turned into a symbol. You can, of course, export an artboard as a bitmap. So export the artboard and place the bitmap of the artboard in your .sketch file. Then, after you edit and re-export the original artboard, “Update All Bitmaps…”
 
 ### So How Does This Work?
 
@@ -30,11 +28,6 @@ If you roll solo, like I do, you don’t have too much to worry about. But if yo
 
 1. keep your placed assets in the same directory as your .sketch file, or in a subdirectory of the directory in which your .sketch file lives. 
 2. or, if your team works off a file server, keep your placed assets on that server. *[Because, theoretically, the paths to the files will be the same for every person who uses that server.]*
-
-
-### About the Mac App Store version of Sketch…
-
-Bohemian Coding have [removed Sketch from the Mac App Store](http://blog.sketchapp.com/post/134322691555/leaving-the-mac-app-store)
 
 ### Frequently Asked Questions
 
@@ -56,6 +49,10 @@ Bohemian Coding have [removed Sketch from the Mac App Store](http://blog.sketcha
 
 ### Version History
 
+- **1.47.1**
+  - bug fix for Sketch 47.
+- **1.43.5**
+  - Support for Sketch 45’s plugin auto-updating.
 - **1.43.2**
   - compatible with Sketch 43.
 - **1.39.2**

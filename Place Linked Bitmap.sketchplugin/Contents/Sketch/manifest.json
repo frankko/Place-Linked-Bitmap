@@ -42,5 +42,5 @@
   "compatibleVersion": "43",
   "description": "Place external bitmap files into Sketch; update Sketch layers after external bitmaps are updated.",
   "name": "Place Linked Bitmap",
-  "version": "1.43.5"
+  "version": "1.47.1"
 }

@@ -7,7 +7,11 @@ var PlaceLinkedBitmap = {
     filePath = this.util.decodeString(filePath);
 
     var imageData = [[NSImage alloc] initWithContentsOfFile:filePath];
-		var newImage = [[MSImageData alloc] initWithImage:imageData convertColorSpace:false]];
+    if (MSApplicationMetadata.metadata().appVersion < 47) {
+  		var newImage = [[MSImageData alloc] initWithImage:imageData convertColorSpace:false]];
+  	} else {
+      var newImage = [[MSImageData alloc] initWithImage:imageData]];
+  	}
 
     var fill = layer.style().fills().firstObject();
     [fill setImage:newImage];
@@ -174,7 +178,11 @@ var PlaceLinkedBitmap = {
     filePath = this.util.decodeString(filePath);
 
     var imageData = [[NSImage alloc] initWithContentsOfFile:filePath];
-		var newImage = [[MSImageData alloc] initWithImage:imageData convertColorSpace:false]];
+    if (MSApplicationMetadata.metadata().appVersion < 47) {
+  		var newImage = [[MSImageData alloc] initWithImage:imageData convertColorSpace:false]];
+  	} else {
+      var newImage = [[MSImageData alloc] initWithImage:imageData]];
+  	}
 
     var fill = layer.style().fills().firstObject();
     [fill setImage:newImage];

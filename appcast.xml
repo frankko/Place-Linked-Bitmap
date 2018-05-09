@@ -6,6 +6,17 @@
     <description>Place external bitmap files into Sketch; update Sketch layers after external bitmaps are updated.</description>
     <language>en</language>
       <item>
+        <title>Version 1.50.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>updates for Sketch 50.</li>
+            </ul>
+          ]]>
+        </description>
+        <enclosure url="https://github.com/frankko/Place-Linked-Bitmap/archive/master.zip" sparkle:version="1.50.0" />
+      </item>
+      <item>
         <title>Version 1.47.1</title>
         <description>
           <![CDATA[
@@ -14,7 +25,7 @@
             </ul>
           ]]>
         </description>
-        <enclosure url="https://github.com/frankko/Place-Linked-Bitmap/archive/master.zip" sparkle:version="1.47.1" />
+        <enclosure url="https://github.com/frankko/Place-Linked-Bitmap/archive/db1358a9c06b50369c699df33b94d5b6e6a9d62e.zip" sparkle:version="1.47.1" />
       </item>
       <item>
         <title>Version 1.43.5</title>

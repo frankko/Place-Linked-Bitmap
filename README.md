@@ -49,6 +49,8 @@ If you roll solo, like I do, you don’t have too much to worry about. But if yo
 
 ### Version History
 
+- **1.50.0**
+  - updates for Sketch 50.
 - **1.47.1**
   - bug fix for Sketch 47.
 - **1.43.5**

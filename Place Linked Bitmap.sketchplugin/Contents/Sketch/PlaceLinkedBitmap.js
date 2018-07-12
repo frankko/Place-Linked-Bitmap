@@ -101,7 +101,17 @@ var PlaceLinkedBitmap = {
     return fileURL;
   },
   "makeBitmapLayer": function(container,name,url) {
-    var layer = [MSBitmapLayer bitmapLayerWithImageFromPath:url];
+    if (MSApplicationMetadata.metadata().appVersion < 51) {
+      var layer = [MSBitmapLayer bitmapLayerWithImageFromPath:url];
+  	} else {
+      var filePath = url.toString();
+      filePath = filePath.replace("file:///","/");
+      filePath = this.util.decodeString(filePath);
+
+      var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
+      var imageData = [[MSImageData alloc] initWithImage:newImage]];
+      var layer = [[MSBitmapLayer alloc] initWithFrame:NSZeroRect image:imageData];
+  	}
 
     if (layer == nil) { 
     } else {
@@ -250,6 +260,12 @@ var PlaceLinkedBitmap = {
       } catch(e) {
         log(e);
       }
+    },
+    "URLtoFilePath": function(url) {
+      var filePath = url.toString();
+      filePath = filePath.replace("file:///","/");
+      filePath = this.util.decodeString(filePath);
+      return filePath;
     }
   }
 };

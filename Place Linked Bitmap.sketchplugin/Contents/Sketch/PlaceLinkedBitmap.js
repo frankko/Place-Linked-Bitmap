@@ -49,7 +49,7 @@ var PlaceLinkedBitmap = {
 
     for (var i = 0; i < [layers count]; i++) {
       var layer = layers[i];
-      if ([command valueForKey:"originalURL" onLayer:layer] && ([layer className] == "MSShapeGroup")) {
+      if ([command valueForKey:"originalURL" onLayer:layer] && (([layer className] == "MSShapeGroup") || ([layer className] == "MSShapePathLayer") || ([layer className] == "MSOvalShape") || ([layer className] == "MSRectangleShape"))) {
         foundLayers.push(layer);
       }
     }

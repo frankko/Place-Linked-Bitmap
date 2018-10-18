@@ -71,7 +71,7 @@ var PLB_place_bitmap_as_fill = function(context) {
       var validLayers = [];
       for (x = 0; x < [selection count]; x++) {
         var layer = [selection objectAtIndex:x];
-        if ([layer className] == "MSShapeGroup") {
+        if (([layer className] == "MSShapeGroup") || ([layer className] == "MSShapePathLayer") || ([layer className] == "MSOvalShape") || ([layer className] == "MSRectangleShape")) {
           validLayers.push(layer);
         }
       }
@@ -145,7 +145,7 @@ var PLB_update_bitmaps = function(context) {
               layer.constrainProportions = true;
             }
             log(fileURLUnix + " updated");
-          } else if ([layer className] == "MSShapeGroup") {
+          } else if (([layer className] == "MSShapeGroup") || ([layer className] == "MSShapePathLayer") || ([layer className] == "MSOvalShape") || ([layer className] == "MSRectangleShape")) {
             PlaceLinkedBitmap.updateShapeLayer(context,layer,fileURLUnix);
             log(fileURLUnix + " updated");
           }

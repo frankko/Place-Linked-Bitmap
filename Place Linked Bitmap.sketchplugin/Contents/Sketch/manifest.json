@@ -43,8 +43,8 @@
   "identifier": "io.kolo.sketch.place-linked-bitmap",
   "author": "Frank Kolodziej",
   "authorEmail": "frank@kolo.io",
-  "compatibleVersion": "48",
+  "compatibleVersion": "52",
   "description": "Place external bitmap files into Sketch; update Sketch layers after external bitmaps are updated.",
   "name": "Place Linked Bitmap",
-  "version": "1.52.0"
+  "version": "1.72.0"
 }

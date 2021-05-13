@@ -1,5 +1,5 @@
 # Place Linked Bitmap
-## A Plugin for Sketch 43+
+## A Plugin for Sketch 52+
 
 ### What is this?
 
@@ -49,6 +49,8 @@ If you roll solo, like I do, you don’t have too much to worry about. But if yo
 
 ### Version History
 
+- **1.72.0**
+  - updates for Sketch 72.
 - **1.52.0**
   - updates for Sketch 52.
 - **1.51.0**

@@ -7,11 +7,7 @@ var PlaceLinkedBitmap = {
     filePath = this.util.decodeString(filePath);
 
     var imageData = [[NSImage alloc] initWithContentsOfFile:filePath];
-    if (MSApplicationMetadata.metadata().appVersion < 47) {
-  		var newImage = [[MSImageData alloc] initWithImage:imageData convertColorSpace:false]];
-  	} else {
-      var newImage = [[MSImageData alloc] initWithImage:imageData]];
-  	}
+    var newImage = [[MSImageData alloc] initWithImage:imageData]];
 
     var fill = layer.style().fills().firstObject();
     [fill setImage:newImage];
@@ -101,17 +97,13 @@ var PlaceLinkedBitmap = {
     return fileURL;
   },
   "makeBitmapLayer": function(container,name,url) {
-    if (MSApplicationMetadata.metadata().appVersion < 51) {
-      var layer = [MSBitmapLayer bitmapLayerWithImageFromPath:url];
-  	} else {
-      var filePath = url.toString();
-      filePath = filePath.replace("file:///","/");
-      filePath = this.util.decodeString(filePath);
+    var filePath = url.toString();
+    filePath = filePath.replace("file:///","/");
+    filePath = this.util.decodeString(filePath);
 
-      var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
-      var imageData = [[MSImageData alloc] initWithImage:newImage]];
-      var layer = [[MSBitmapLayer alloc] initWithFrame:NSZeroRect image:imageData];
-  	}
+    var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
+    var imageData = [[MSImageData alloc] initWithImage:newImage]];
+    var layer = [[MSBitmapLayer alloc] initWithFrame:NSZeroRect image:imageData];
 
     if (layer == nil) { 
     } else {
@@ -188,11 +180,7 @@ var PlaceLinkedBitmap = {
     filePath = this.util.decodeString(filePath);
 
     var imageData = [[NSImage alloc] initWithContentsOfFile:filePath];
-    if (MSApplicationMetadata.metadata().appVersion < 47) {
-  		var newImage = [[MSImageData alloc] initWithImage:imageData convertColorSpace:false]];
-  	} else {
-      var newImage = [[MSImageData alloc] initWithImage:imageData]];
-  	}
+    var newImage = [[MSImageData alloc] initWithImage:imageData]];
 
     var fill = layer.style().fills().firstObject();
     [fill setImage:newImage];

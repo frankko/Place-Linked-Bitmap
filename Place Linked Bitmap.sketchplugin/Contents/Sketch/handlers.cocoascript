@@ -134,15 +134,17 @@ var PLB_update_bitmaps = function(context) {
             PlaceLinkedBitmap.updateBitmapLayer(context,layer,fileURLUnix);
             [[layer frame] setX:layerFrameX];
             [[layer frame] setY:layerFrameY];
+/*
             if ([layer constrainProportions] == true) {
               layerIsConstrained = true;
             }
+*/
 
             layer.constrainProportions = false;
             [[layer frame] setWidth:layerFrameW];
             [[layer frame] setHeight:layerFrameH];
             if (layerIsConstrained){
-              layer.constrainProportions = true;
+//              layer.constrainProportions = true;
             }
             log(fileURLUnix + " updated");
           } else if (([layer className] == "MSShapeGroup") || ([layer className] == "MSShapePathLayer") || ([layer className] == "MSOvalShape") || ([layer className] == "MSRectangleShape")) {

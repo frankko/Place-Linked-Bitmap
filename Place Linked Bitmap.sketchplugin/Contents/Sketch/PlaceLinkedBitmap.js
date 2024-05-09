@@ -1,3 +1,6 @@
+const sketch = require("sketch");
+const Image = require('sketch/dom');
+
 var PlaceLinkedBitmap = {
   "addFillToShapeLayer": function(context,layer,url) {
     var doc = context.document;
@@ -160,16 +163,11 @@ var PlaceLinkedBitmap = {
     }
   },
   "updateBitmapLayer": function(context,layer,url) {
-    var doc = context.document;
-    var imageCollection = [[[doc documentData] assets] imageCollection];
-
     var filePath = url.toString();
     filePath = filePath.replace("file:///","/");
-    filePath = this.util.decodeString(filePath);
 
-    var newImage = [[NSImage alloc] initWithContentsOfFile:filePath];
-    var replaceAction = [[doc actionsController] actionForID:"MSReplaceImageAction"];
-    [replaceAction applyImage:newImage tolayer:layer];
+    let jsImageLayer = Image.fromNative(layer);
+    jsImageLayer.image = filePath;
   },
   "updateShapeLayer": function(context,layer,url) {
     var doc = context.document;

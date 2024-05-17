@@ -49,6 +49,8 @@ If you roll solo, like I do, you don’t have too much to worry about. But if yo
 
 ### Version History
 
+- **1.99.1**
+  - Fixes image fills not updating.
 - **1.99.0**
   - updates for Sketch 99.
 - **1.77.0**

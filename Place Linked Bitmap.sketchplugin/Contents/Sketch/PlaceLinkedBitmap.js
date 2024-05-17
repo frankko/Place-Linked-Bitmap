@@ -170,12 +170,8 @@ var PlaceLinkedBitmap = {
     jsImageLayer.image = filePath;
   },
   "updateShapeLayer": function(context,layer,url) {
-    var doc = context.document;
-    var imageCollection = [[[doc documentData] assets] imageCollection];
-
     var filePath = url.toString();
     filePath = filePath.replace("file:///","/");
-    filePath = this.util.decodeString(filePath);
 
     var imageData = [[NSImage alloc] initWithContentsOfFile:filePath];
     var newImage = [[MSImageData alloc] initWithImage:imageData]];
